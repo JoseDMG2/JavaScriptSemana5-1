@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>JavaScript</h1>
+        <p>Objetos y Arreglos</p>
+        <script>
+            let a=10;
+            let b=5;
+            document.write("a: ",a);
+            document.write("<br>b: ",b);
+            document.write("<br>Suma: ",a+b);
+            document.write("<br>Resta: ",a-b);
+            
+            //Operadores de comparación
+            document.write("<br>a es mayor igual que b: ", a===b);
+            document.write("<br>a es mayor que b: ", a>b);
+            
+            //Operadores lógicos
+            document.write("<br>a es mayor que b y b es menor que 10: ", a>b && b<10);
+            
+            //Objetos
+            let persona={
+                nombre: "José",
+                edad: 19,
+                saludar: function(){
+                    document.write("<br>wenas xd soy "+this.nombre);
+                }
+            };
+            
+            persona.saludar();
+            document.write("<br>",persona.nombre);
+            document.write("<br>",persona.edad);
+            
+            //Funciones
+            function sumar(x,y){
+                return x+y;
+            }
+            function restar(x,y){
+                return x-y;
+            }
+            function multiplicar(x,y){
+                return x*y;
+            }
+            function dividir(x,y){
+                return x/y;
+            }
+            //llamando a la funcion
+        let resultado = sumar(24,6);
+        let resultadoResta= restar(24,6);
+        document.write("<br> La suma es: "+resultado);
+        document.write("<br> La resta es: "+resultadoResta);
+        
+        
+        //Arreglos
+        let frutas = ["naranja","fresa", "papaya"];
+        document.write("<br>", frutas[1]);
+        //añadiendo elemento al final del arreglo
+        frutas.push("durazno");
+        document.write("<br>", frutas);
+        //recorrer un arreglo
+        for(let i=0; i<frutas.length;i++){
+            document.write("<br>",frutas[i]);
+        }
+        //funcion flecha
+        let longitudes=frutas.map(fruta =>fruta.length);
+        document.write("<br>",longitudes );
+
+        //Tarea con método completar
+        function crearTarea(descripcion){
+            return {
+                descripcion: descripcion,
+            completado: false,
+            completar: function(){
+                this.completado = true;
+            }
+            }
+        }
+
+        //Arreglo de tareas
+        let tareas = [
+            crearTarea("Estudiar JavaScript"),
+            crearTarea("Hacer ejercicio"),
+            crearTarea("Hacer tarea"),
+            crearTarea("Practicar Pyton"),
+            crearTarea("Elaborar bases de datos"),
+            crearTarea("Continuar proyecto de investigación"),
+            crearTarea("Avanzar gestión académica"),
+            crearTarea("Enviar reporte"),
+            crearTarea("Mandar correo"),
+            crearTarea("Salir a correr"),
+        ];
+
+        //funcion para mostrar tareas
+        function mostrarTareas(tareas) {
+            tareas.forEach((tarea, index) => {
+                console.log(`${index + 1}. ${tarea.descripcion} - ${tarea.completado ? "Completado" : "Pendiente"}`);
+            });
+        }
+
+        function marcarComoCompletado(tareas, index) {
+            if (tareas[index] && typeof tareas[index].completar === 'function') {
+                tareas[index].completar();
+            } else {
+                tareas[index].completar();
+            }
+        }
+
+        //Mostrar tareas iniciales
+        console.log("Tareas iniciales: ");
+        mostrarTareas(tareas);
+
+        //Marcar la primera tarea como completada
+        marcarComoCompletado(tareas, 0);
+        marcarComoCompletado(tareas, 1);
+        marcarComoCompletado(tareas, 4);
+        marcarComoCompletado(tareas, 5);
+        marcarComoCompletado(tareas, 6);
+        marcarComoCompletado(tareas, 8);
+
+        //Mostrar tareas después de completar una
+        console.log("Tareas después de completar una: ");
+        mostrarTareas(tareas);
+        </script>
+</body>
+</html>
